@@ -5,12 +5,12 @@ const path = require('path');
 const getDirectoryNames = (fileNames) =>
   fileNames.map((fileName) => path.basename(path.dirname(fileName)));
 
-function findFromDirectory({ searchDirectory, fileGlob, unique }) {
+function findFromDirectory({ searchDirectory, filesGlob, unique }) {
   const adjustedSearchPath = `${process.cwd()}${searchDirectory}`
   core.debug(process.cwd());
   core.debug({ adjustedSearchPath });
 
-  const fileNames = glob.sync(fileGlob, { cwd: adjustedSearchPath });
+  const fileNames = glob.sync(filesGlob, { cwd: adjustedSearchPath });
   core.debug({ fileNames });
 
   const directoryNames = unique
@@ -23,21 +23,21 @@ function findFromDirectory({ searchDirectory, fileGlob, unique }) {
 
 try {
   const searchDirectory = core.getInput('search-directory');
-  const fileGlob = core.getInput('file-glob');
+  const filesGlob = core.getInput('files-glob');
   const unique = JSON.parse(core.getInput('unique'));
   core.debug({
     searchDirectory,
-    fileGlob,
+    filesGlob,
     unique,
   });
 
   const directoryNames = findFromDirectory({
     searchDirectory,
-    fileGlob,
+    filesGlob,
     unique,
   });
 
-  core.setOutput('directory-names', directoryNames);
+  core.setOutput('directories', directoryNames);
 } catch (error) {
   core.setFailed(error.message);
 }

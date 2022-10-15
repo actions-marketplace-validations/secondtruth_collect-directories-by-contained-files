@@ -1,23 +1,23 @@
-name: 'Collect Directory Names by File'
-description: 'Returns an array of parent directory names based on a passed file glob'
+name: 'Collect directories by contained files'
+description: 'Returns an array of directories that contain file(s) matching a glob pattern'
 branding:
   icon: 'folder'
   color: 'blue'
 inputs:
-  file-glob:
-    description: 'A glob representing the file(s) for which to search'
+  files-glob:
+    description: 'A glob representing the file(s) to search for'
     required: true
   search-directory:
-    description: 'The directory to search (if not set, root is used)'
+    description: 'The directory to search (if not set, the root directory is used)'
     required: false
     default: '/'
   unique:
-    description: 'Whether or not to return unique values when duplicates may be possible'
+    description: 'Whether to return unique values when duplicates may be possible'
     required: false
     default: "true"
 outputs:
-  directory-names:
-    description: 'An array of parent directory names'
+  directories:
+    description: 'An array of parent directories that contain the specified file(s)'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'
