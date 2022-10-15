@@ -14,7 +14,11 @@ inputs:
   unique:
     description: 'Whether to return unique values when duplicates may be possible'
     required: false
-    default: "true"
+    default: true
+  return-basenames:
+    description: 'Whether to return the directory base names in the return value'
+    required: false
+    default: false
 outputs:
   directories:
     description: 'An array of parent directories that contain the specified file(s)'

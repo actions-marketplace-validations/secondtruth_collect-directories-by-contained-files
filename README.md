@@ -18,6 +18,10 @@ The location where we should search for files that match the `file-glob` (e.g. `
 
 Whether to return unique values when duplicates may be possible. Default: `true`.
 
+### `return-basenames`
+
+Whether to return the directory base names instead of the full paths. Default: `false`.
+
 ## Outputs
 
 ### `directories`
