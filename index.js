@@ -24,7 +24,7 @@ function findFromDirectory({ searchDirectory, filesGlob, unique }) {
 try {
   const searchDirectory = core.getInput('search-directory');
   const filesGlob = core.getInput('files-glob');
-  const unique = JSON.parse(core.getInput('unique'));
+  const unique = core.getBooleanInput('unique');
   core.debug({
     searchDirectory,
     filesGlob,
